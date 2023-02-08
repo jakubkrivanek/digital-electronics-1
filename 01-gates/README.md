@@ -4,11 +4,7 @@
 
 1. Equations of all three versions of logic function f(c,b,a):
 
-   \begin{align*}
-   f_{\textup{ORIG}}(c,b,a) =&~ \overline{b}\cdot a + c\cdot\overline{(b+\overline{a})}\\
-   f_{\textup{(N)AND}}(c,b,a) =&~ \overline{\overline{(\overline{b}\cdot a)}\cdot \overline{(c\cdot(\overline{b}\cdot a))}} \\   
-   f_{\textup{(N)OR}}(c,b,a) =&~ \overline{(b + \overline{a})} + \overline{(\overline{c} + (b + \overline{a}))} \\
-\end{align*}
+   ![CodeCogsEqn](https://user-images.githubusercontent.com/124684744/217614379-5cecde01-47d0-4d6a-87e6-69355077693e.png)
 
 2. Listing of VHDL architecture from design file (`design.vhd`) for all three functions. Always use syntax highlighting, meaningful comments, and follow VHDL guidelines:
 
@@ -36,9 +32,13 @@ end architecture dataflow;
 
 ### Distributive laws
 
+Second Distributive law:
+
+![CodeCogsEqn (1)](https://user-images.githubusercontent.com/124684744/217614488-16ecfd56-5b33-4284-8095-0bba6146132d.png)
+
 1. Screenshot with simulated time waveforms. Always display all inputs and outputs (display the inputs at the top of the image, the outputs below them) at the appropriate time scale!
 
-   ![This is and image](file:///C:/Users/Jakub/Desktop/Screenshot_1.png)
+   ![Screenshot_1](https://user-images.githubusercontent.com/124684744/217614278-36b29656-df80-4b98-a5eb-7726c368f634.png)
 
 2. Link to your public EDA Playground example:
 
