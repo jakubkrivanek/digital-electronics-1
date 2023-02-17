@@ -67,4 +67,6 @@
 
 2. Link to your public EDA Playground example:
 
+![4bit](https://user-images.githubusercontent.com/124684744/219668939-d80ab92a-ff0c-4342-9808-9a0436cdd704.png)
+
    [https://www.edaplayground.com/x/Biys](https://www.edaplayground.com/x/Biys)
