@@ -22,40 +22,48 @@ end entity tb_mux_3bit_4to1;
 ------------------------------------------------------------
 -- Architecture body for testbench
 ------------------------------------------------------------
-architecture testbench of tb_mux_3bit_4to1 is
+architecture Behavioral of tb_mux_3bit_4to1 is
 
     -- Local signals
-        a_i           : in  std_logic_vector(3 - 1 downto 0);
-        b_i           : in  std_logic_vector(3 - 1 downto 0); -- COMPLETE THE ENTITY DECLARATION
-        c_i           : in  std_logic_vector(3 - 1 downto 0);
-        d_i           : in  std_logic_vector(3 - 1 downto 0);
-        sel_i         : in  std_logic_vector(2 - 1 downto 0);
-        f_o           : out std_logic_vector(3 - 1 downto 0)
+       signal s_a           : std_logic_vector(3 - 1 downto 0);
+       signal s_b           : std_logic_vector(3 - 1 downto 0); -- COMPLETE THE ENTITY DECLARATION
+       signal s_c           : std_logic_vector(3 - 1 downto 0);
+       signal s_d           : std_logic_vector(3 - 1 downto 0);
+       signal s_sel         : std_logic_vector(2 - 1 downto 0);
+       signal s_f           : std_logic_vector(3 - 1 downto 0);
 
 begin
-    -- Connecting testbench signals with comparator_2bit
+    -- Connecting testbench signals with mux_3bit_4to1
     -- entity (Unit Under Test)
     uut_mux_3bit_4to1 : entity work.mux_3bit_4to1
         port map(
             a_i           => s_a,
             b_i           => s_b,
-            B_greater_A_o => s_B_greater_A,
-            B_equals_A_o  => s_B_equals_A,
-            B_less_A_o    => s_B_less_A
+            c_i           => s_c,
+            d_i           => s_d,
+            sel_i         => s_sel,
+            f_o           => s_f       
         );
 
     --------------------------------------------------------
     -- Data generation process
     --------------------------------------------------------
-p_label : process (a)
-begin
-    if (a = '0') then
-        q <= '0';
-    else
-        q <= '1';
-    end if;
-end process p_label;
-
-    end process p_stimulus;
-    
-end architecture testbench;
+   stim_process: process
+        begin
+            s_a<="000";
+            s_b<="001";
+            s_c<="010";
+            s_d<="100";
+            
+        s_sel<="00";
+        wait for 100ns;
+        s_sel<="01";
+        wait for 100ns;
+        s_sel<="10";
+        wait for 100ns;
+        s_sel<="11";
+        wait for 100ns;
+        end process;
+ 
+end Behavioral;
+        
