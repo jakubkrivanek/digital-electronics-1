@@ -25,22 +25,28 @@
 
 2. Listing of LEDs(7:4) part of VHDL architecture from source file `top.vhd`. Try to write logic functions as simple as possible. Always use syntax highlighting, meaningful comments, and follow VHDL guidelines:
 
-   ```vhdl
+```vhdl
    --------------------------------------------------------------------
    -- Experiments on your own: LED(7:4) indicators
 
-   --  LED(4) on if input value is equal to 0, ie "0000"
-  LED(4) <= '1' when (SW = "0000") else
-          '1';
--- Turn LED(5) on if input value is greater than "1001", ie 10, 11, 12, ...
-  LED(5) <= '1' when (SW = "1010" OR SW = "1011" OR SW = "1100" OR SW = "1101" OR SW = "1110" OR SW = "1111") else '0';
+   -- Turn LED(4) on if input value is equal to 0, ie "0000"
+   LEDP4 <= '1' when (SW = "0000") else
+          '0';
 
--- Turn LED(6) on if input value is odd, ie 1, 3, 5, ... 
-  LED(6) <= '1' when (SW = "0001" OR SW = "0011" OR SW = "0101" OR SW = "0111" OR SW = "1001") else '0';
+   -- Turn LED(5) on if input value is greater than "1001", ie 10, 11, 12, ...
+   LEDP5 <= '1' when (SW = "1010" OR SW = "1011" OR SW = "1100" OR SW = "1101" OR SW = "1110" OR SW = "1111") else 
+          '0';
 
--- Turn LED(7) on if input value is a power of two, ie 1, 2, 4, or 8 
-  LED(7) <= '1' when (SW = "0001" OR SW = "0010" OR SW = "0100" OR SW = "1000") else '0';
+   -- Turn LED(6) on if input value is odd, ie 1, 3, 5, ...
+   LEDP6 <= '1' when (SW = "0001" OR SW = "0011" OR SW = "0101" OR SW = "0111" OR SW = "1001") else 
+          '0';
+
+   -- Turn LED(7) on if input value is a power of two, ie 1, 2, 4, or 8
+   LEDP7 <= '1' when (SW = "0001" OR SW = "0010" OR SW = "0100" OR SW = "1000") else 
+          '0';
+   ```
 
 3. Screenshot with simulated time waveforms for LED(7:4). Always display all inputs and outputs (display the inputs at the top of the image, the outputs below them) at the appropriate time scale!
+
 
    ![experiment_display1](https://user-images.githubusercontent.com/124684744/222198058-5fcdbf6a-f992-4a18-bf8b-97c3fbae7a81.png)
