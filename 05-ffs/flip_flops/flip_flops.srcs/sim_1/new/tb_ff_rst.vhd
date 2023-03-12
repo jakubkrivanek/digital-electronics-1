@@ -19,11 +19,17 @@ architecture testbench of tb_ff_rst is
     signal sig_clk_100MHz : std_logic;
     signal sig_rst        : std_logic;
     signal sig_data       : std_logic;
+    
     signal sig_d_q        : std_logic;
     signal sig_d_q_bar    : std_logic;
   
     signal sig_t_q        : std_logic;
     signal sig_t_q_bar    : std_logic;
+    
+    signal sig_data1      : std_logic;
+    signal sig_data2      : std_logic;
+    signal sig_JK_q       : std_logic;
+    signal sig_JK_q_bar   : std_logic;
 
 begin
     -- Connecting testbench signals with d_ff_rst entity
@@ -46,7 +52,17 @@ begin
             q     => sig_t_q,
             q_bar => sig_t_q_bar     
         );
-
+    -- Connecting testbench signals with d_ff_rst entity
+    -- (Unit Under Test)        
+    uut_jk_ff_rst : entity work.jk_ff_rst
+        port map (
+            clk   => sig_clk_100MHz,
+            rst   => sig_rst,
+            K     => sig_data1,
+            J     => sig_data2,
+            q     => sig_JK_q,
+            q_bar => sig_JK_q_bar
+        );    
     --------------------------------------------------------
     -- Clock generation process
     --------------------------------------------------------
@@ -90,6 +106,11 @@ begin
         
         sig_data <='1'; wait for 17 ns;
         sig_data <='0'; wait for 34 ns;
+        
+        sig_data1 <='0'; sig_data2<='1'; wait for 16 ns;
+        sig_data1 <='1'; sig_data2<='1'; wait for 16 ns;
+        sig_data1 <='0'; sig_data2<='0'; wait for 16 ns;
+        sig_data1 <='1'; sig_data2<='0'; wait for 16 ns;
         -- DEFINE YOUR INPUT DATA HERE
 
         report "Stimulus process finished";
