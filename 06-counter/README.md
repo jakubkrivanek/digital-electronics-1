@@ -1,4 +1,4 @@
-# Lab 6: INSERT_YOUR_FIRSTNAME INSERT_YOUR_LASTNAME
+# Lab 6: Jakub Krivanek
 
 ### Bidirectional counter
 
@@ -31,10 +31,11 @@
 
 2. Screenshot with simulated time waveforms. Test: (a) reset, (b) counter direction, (c) enable. Always display all inputs and outputs (display the inputs at the top of the image, the outputs below them) at the appropriate time scale!
 
-   ![your figure]()
+   ![cnt_up_down](https://user-images.githubusercontent.com/124684744/226170109-86c0c76d-1376-4739-ac97-8397dca7e7dc.png)
 
 ### Two counters
 
 1. Image of the top layer structure including both counters, ie a 4-bit bidirectional counter from *Part 4* and a 12-bit counter with a 10 ms time base from *Experiments on your own*. The image can be drawn on a computer or by hand. Always name all inputs, outputs, components and internal signals!
 
-   ![your figure]()
+   ![4bit](https://user-images.githubusercontent.com/124684744/226171609-7bb6240a-8e18-406d-bf58-63421f157c64.png)
+   ![12bit](https://user-images.githubusercontent.com/124684744/226171625-e5bef816-594c-4125-b73d-a1d27c6c99cc.png)
