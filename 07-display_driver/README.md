@@ -36,7 +36,7 @@
           when "01" =>
             sig_hex <= data1;
             dp      <= dp_vect(1);
-            dig     <= "1011";
+            dig     <= "1101";
 
           when others =>
             sig_hex <= data0;
