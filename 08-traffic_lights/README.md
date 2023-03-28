@@ -50,7 +50,7 @@
               sig_cnt <= sig_cnt + 1;
             else
               -- Move to the next state
-              sig_state <= WEST_STOP;
+              sig_state <= SOUTH_STOP;
               -- Reset local counter value
               sig_cnt <= c_ZERO;
             end if;
@@ -60,7 +60,7 @@
               sig_cnt <= sig_cnt + 1;
             else
               -- Move to the next state
-              sig_state <= WEST_GO;
+              sig_state <= SOUTH_GO;
               -- Reset local counter value
               sig_cnt <= c_ZERO;
             end if;
@@ -70,7 +70,7 @@
               sig_cnt <= sig_cnt + 1;
             else
               -- Move to the next state
-              sig_state <= WEST_WAIT;
+              sig_state <= SOUTH_WAIT;
               -- Reset local counter value
               sig_cnt <= c_ZERO;
             end if;
