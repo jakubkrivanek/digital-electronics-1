@@ -12,7 +12,7 @@ entity uart_rx is
         s_tick: in std_logic;
         rx_done_tick: out std_logic;
         dout: out std_logic_vector (7 downto 0)
-    );
+   );
 end uart_rx ;
 
 architecture arch of uart_rx is

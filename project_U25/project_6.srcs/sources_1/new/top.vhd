@@ -84,8 +84,57 @@ begin
            q        =>open,
            max_tick =>tick
         ); 
-        
-    hex_7_seg   :   entity work.driver_7seg_4digits
+  
+    uart_rx_unit:   entity work.uart_rx
+    generic map(DBIT => DBIT, SB_TICK => SB_TICK)
+    port map(
+        clk             => CLK100MHZ,
+        reset           => reset,
+        rx              => rx,
+        s_tick          => tick,
+        rx_done_tick    => rx_done_tick,
+        dout            => rx_data_out
+    );
+    
+    fifo_rx_unit:   entity work.fifo(Behavioral)
+    generic map(B=>DBIT, W=>FIFO_W)
+    port map(
+        clk         => CLK100MHZ,
+        reset       => reset,
+        rd          => rd_uart,
+        wr          => rx_done_tick,
+        w_data      => rx_data_out,
+        empty       => rx_empty,
+        full        => open,
+        r_data      => r_data_i       
+    );
+    
+    
+    fifo_tx_unit:   entity work.fifo(Behavioral)
+    generic map(B=>DBIT, W=>FIFO_W)
+    port map(
+        clk         => CLK100MHZ,
+        reset       => reset,
+        rd          => tx_done_tick,
+        wr          => wr_uart,
+        w_data      => SW,
+        empty       => tx_empty,
+        full        => tx_full,
+        r_data      => tx_fifo_out       
+    );
+    uart_tx_unit:   entity work.uart_transmitter
+    generic map(DBIT => DBIT, SB_TICK => SB_TICK)
+    port map(
+        clk             => CLK100MHZ,
+        reset           => reset,
+        tx_start        => tx_fifo_not_empty,
+        s_tick          => tick,
+        din             => tx_fifo_out, 
+        tx_done_tick    => tx_done_tick,
+        tx              => tx
+    );    
+    tx_fifo_not_empty <= tx_empty;
+ hex_7_seg   :   entity work.driver_7seg_4digits
     port map (
           seg(6) => CA,
           seg(5) => CB,
@@ -123,56 +172,6 @@ begin
           dig(3 downto 0) => AN(3 downto 0)
     );    
     r_data_i <= LED;
-    AN(7 downto 4) <= b"1111";
-    uart_rx_unit:   entity work.uart_rx
-    generic map(DBIT => DBIT, SB_TICK => SB_TICK)
-    port map(
-        clk             => CLK100MHZ,
-        reset           => reset,
-        rx              => rx,
-        s_tick          => tick,
-        rx_done_tick    => rx_done_tick,
-        dout            => rx_data_out
-    );
-    
-    fifo_rx_unit:   entity work.fifo(Behavioral)
-    generic map(B=>DBIT, W=>FIFO_W)
-    port map(
-        clk         => CLK100MHZ,
-        reset       => reset,
-        rd          => rd_uart,
-        wr          => rx_done_tick,
-        w_data      => SW,
-        empty       => rx_empty,
-        full        => open,
-        r_data      => r_data_i       
-    );
-    
-    
-    fifo_tx_unit:   entity work.fifo(Behavioral)
-    generic map(B=>DBIT, W=>FIFO_W)
-    port map(
-        clk         => CLK100MHZ,
-        reset       => reset,
-        rd          => tx_done_tick,
-        wr          => wr_uart,
-        w_data      => SW,
-        empty       => tx_empty,
-        full        => tx_full,
-        r_data      => tx_fifo_out       
-    );
-    uart_tx_unit:   entity work.uart_transmitter
-    generic map(DBIT => DBIT, SB_TICK => SB_TICK)
-    port map(
-        clk             => CLK100MHZ,
-        reset           => reset,
-        tx_start        => tx_fifo_not_empty,
-        s_tick          => tick,
-        din             => tx_fifo_out, 
-        tx_done_tick    => tx_done_tick,
-        tx              => tx
-    );    
-    tx_fifo_not_empty <= tx_empty;
-    
+    AN(7 downto 4) <= b"1111";    
 
 end Behavioral;
