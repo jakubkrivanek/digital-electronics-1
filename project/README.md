@@ -30,7 +30,9 @@ The input port "rx" is a serial data input from the converter. The input port "s
 
 ### Component(s) simulation
 
-Write descriptive text and simulation screenshots of your components.
+Screenshot of our UART :
+
+![uart_tb](https://user-images.githubusercontent.com/124684744/235376387-fd813abd-e337-4f1a-9b5c-6d9fe650dc23.png)
 
 ## Instructions
 ### Transmitter:
