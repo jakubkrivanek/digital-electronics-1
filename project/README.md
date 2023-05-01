@@ -1,12 +1,12 @@
 # VHDL project
 
-### UART (Universal Asynchronous Receiver/Transmitter) vysílaè a pøijímaè.
+### UART (Universal Asynchronous Receiver/Transmitter)
 
 ### Team members
 
-* Lukáš Køíž 
-* Michal Kováø
-* Jakub Køivánek
+* Lukas Kriz
+* Michal Kovar
+* Jakub Krivanek
 
 ## Theoretical description and explanation
 
@@ -15,7 +15,7 @@ UART stands for Universal Asynchronous Receiver/Transmitter, and it is a commonl
 ## Hardware description of demo application
 Block diagram of UART designed in VHDL:
 
-![TOP_uart](https://user-images.githubusercontent.com/124684744/235367565-ab059bf5-4c3a-4a8e-aee5-b239c80b32a5.png)
+![uart_schema](https://user-images.githubusercontent.com/124684744/235447990-62608f3f-8d7b-46f5-b637-c452ca2f4952.png)
 
 
 Insert descriptive text and schematic(s) of your implementation.
@@ -32,15 +32,17 @@ The input port "rx" is a serial data input from the converter. The input port "s
 
 Screenshot of our UART :
 
-![uart_tb](https://user-images.githubusercontent.com/124684744/235376387-fd813abd-e337-4f1a-9b5c-6d9fe650dc23.png)
+![uart_tb1](https://user-images.githubusercontent.com/124684744/235448080-d529142f-33d2-4819-acda-e9c990656aa9.png)
 
 ## Instructions
+
 ### Transmitter:
 1. It is necessary to connect the transmitter's GND to the GND pin and connect rx to JC 1.
 2. Use the first eight switches from the right-hand side to set the desired binary combination. 
 The combination should be displayed on the first two seven-segment displays from the right-hand side.
 3. To send, press the right button.
 4. When reset is needed, press the middle button.
+
 ### Reciever:
 1. It is necessary to connect the transmitter's GND to the GND pin and connect tx to JC 1.
 2. To receive data, press the left button.
