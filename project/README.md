@@ -20,6 +20,8 @@ Block diagram of UART designed in VHDL:
 
 Insert descriptive text and schematic(s) of your implementation.
 
+There is nothing here because after implementing it on the board, it doesn't work.
+
 ## Software description
 
 #### Transmitter:
